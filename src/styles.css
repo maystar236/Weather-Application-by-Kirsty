@@ -1,0 +1,69 @@
+.container {
+  font-family: "Overpass", sans-serif;
+  color: white;
+  max-width: 450px;
+  box-shadow: 5px 10px 10px 10px #cdd7e7;
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 30px;
+  background-image: linear-gradient(
+    to top,
+    #1e3c72 0%,
+    #1e3c72 1%,
+    #2a5298 100%
+  );
+}
+button {
+  color: black;
+  padding: 8px 8px;
+  border-radius: 50%;
+  border: 0px;
+  background: transparent;
+  transition: all 200ms ease-in-out;
+}
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+  margin: 10px 0px 0px 0px;
+}
+h3 {
+  font-size: 20px;
+  text-align: center;
+  margin: 0px 0px 20px 0px;
+}
+h4 {
+  font-weight: 100px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.date-time {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.entercity {
+  width: 80%;
+}
+
+.current-temp {
+  font-size: 60px;
+  display: inline;
+}
+
+.forecast-temp {
+  font-size: 11.5px;
+  text-align: center;
+}
+.days {
+  text-align: center;
+}
+
+button:hover {
+  color: white;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9f44ef6af2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Weather App</title>
+  </head>
+  <link rel="stylesheet" href="src/styles.css" />
+  <body>
+    <div class="container">
+      <div class="date-time">
+        <span id="date">Date:</span><br />
+        <span id="time">Time:</span>
+      </div>
+      <form id="search-form">
+        <input id ="searchField" type="search" placeholder="Enter your city" class="entercity" />
+        <button id = "city-search"><i class="fas fa-search"></i></button>
+        <button type="button" id = "location-search"><i class="fas fa-search-location"></i></button>
+      </form>
+    <div class="current-weather">
+      <h2 id="searchResult">Enter your city</h2>
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <h4 id = "current-Desc">Current weather</h4>
+          
+          <div class="current-temp"></div>
+          <a href="#" id = "celsius">°C</a> / <a href="#" id = "fahrenheit">°F</a>
+          </div>
+          <div class="col-6">
+            <div class="current-weather" >
+              <img src="src/Images/sun.png" alt="sunny"> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6" id = "feels-like">Feels like:</div>
+        <div class="col-6" id = "humidity">Humidity:</div>
+        <div class="col-6" id = "currentLowTemp">Low:</div>
+        <div class="col-6" id = "precipitation">Precipitation:</div>
+        <div class="col-6" id = "currentHighTemp">High:</div>
+        <div class="col-6" id = "wind">Wind:</div>
+      </div>
+      
+      <div class="row">
+          <div class="col-6" id ="sunrise">Sunrise: 6am</div>
+          <div class="col-6" id ="sunset">Sunset: 6pm</div>
+        </div>
+      <br />
+      
+      <h4>Five day forecast</h4>
+      <div class="days">
+        <div class="row">
+          <div class="col">MON</div>
+          <div class="col">TUE</div>
+          <div class="col">WED</div>
+          <div class="col">THU</div>
+          <div class="col">FRI</div>
+        </div>
+
+      <div class="forecast-temp">
+        <div class="row">
+          <div class="col"><img src="src/Images/cloudy.png"></div>
+          <div class="col"><img src="src/Images/sun-cloud-wind.png"></div>
+          <div class="col"><img src="src/Images/sun.png"></div>
+          <div class="col"><img src="src/Images/sun.png"></div>
+          <div class="col"><img src="src/Images/stormy.png"></div>
+        </div>
+      </div>
+
+       <div class="forecast-temp">
+         <div class="row">
+           <div class="col">High 21°C</i></div>
+           <div class="col">High 18°C</i></div>
+           <div class="col">High 22°C</i></div>
+           <div class="col">High 16°C</i></div>
+           <div class="col">High 17°C</i></div>
+         </div> 
+       </div>
+
+
+      <div class="forecast-temp">
+        <div class="row">
+          <div class="col">Low 17°C</i></div>
+          <div class="col">Low 12°C</i></div>
+          <div class="col">Low 15°C</i></div>
+          <div class="col">Low 9°C</i></div>
+          <div class="col">Low 10°C</i></div>
+        </div>
+      </div>
+      </div>
+    </div>
+	</body>
+	<script src="src/script.js"></script>
+</html>

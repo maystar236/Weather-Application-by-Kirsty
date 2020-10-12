@@ -67,3 +67,10 @@ img {
 button:hover {
   color: white;
 }
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: #2a5298;
+}

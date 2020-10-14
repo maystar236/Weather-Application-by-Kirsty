@@ -74,3 +74,6 @@ a:visited {
 a:hover {
   color: #2a5298;
 }
+h4:first-letter {
+  text-transform: capitalize;
+}

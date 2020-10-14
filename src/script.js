@@ -65,22 +65,22 @@ function displayWeather(response) {
   currentDesc.innerHTML = `${response.data.weather[0].description}`;
 
   let feelsLike = document.querySelector("#feels-like");
-  feelsLike.innerHTML = `Feels like: ${response.data.main.feels_like}°C`;
+  feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°C`;
 
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
 
   let currentLowTemp = document.querySelector("#currentLowTemp");
-  currentLowTemp.innerHTML = `Low: ${response.data.main.temp_min}°C`;
+  currentLowTemp.innerHTML = `Low: ${Math.round(response.data.main.temp_min)}°C`;
 
   //let precipitation = document.querySelector("#precipitation");
   //precipitation.innerHTML = `Precipitation: ${response.data.weather.icon}`;
 
   let currentHighTemp = document.querySelector("#currentHighTemp");
-  currentHighTemp.innerHTML = `High: ${response.data.main.temp_max}°C`;
+  currentHighTemp.innerHTML = `High: ${Math.round(response.data.main.temp_max)}°C`;
 
   let windSpeed = document.querySelector("#wind");
-  windSpeed.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
 
   let sunrise = document.querySelector("#sunrise");
   sunrise.innerHTML = `Sunrise: ${response.data.sys.sunrise}`;

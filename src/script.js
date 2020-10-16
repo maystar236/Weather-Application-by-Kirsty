@@ -108,6 +108,9 @@ function displayWeather(response) {
   let sunsetTime = `${sunsetHour}:${sunsetMinutes}`;
   let sunset = document.querySelector("#sunset");
   sunset.innerHTML = `Sunset: ${sunsetTime}`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function showCurrentPosition(position) {
@@ -127,3 +130,4 @@ searchForm.addEventListener("submit", searchCity);
 
 let currentLocationButton = document.querySelector("#location-search");
 currentLocationButton.addEventListener("click", getLocation);
+

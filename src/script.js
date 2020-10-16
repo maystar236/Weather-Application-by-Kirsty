@@ -73,20 +73,21 @@ function displayWeather(response) {
   let currentLowTemp = document.querySelector("#currentLowTemp");
   currentLowTemp.innerHTML = `Low: ${Math.round(response.data.main.temp_min)}°C`;
 
-  //let precipitation = document.querySelector("#precipitation");
-  //precipitation.innerHTML = `Precipitation: ${response.data.weather.icon}`;
-
   let currentHighTemp = document.querySelector("#currentHighTemp");
   currentHighTemp.innerHTML = `High: ${Math.round(response.data.main.temp_max)}°C`;
 
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
 
+  let sunriseUnix = response.data.sys.sunrise;
+  let sunriseDate = new Date(sunriseUnix*1000);
   let sunrise = document.querySelector("#sunrise");
-  sunrise.innerHTML = `Sunrise: ${response.data.sys.sunrise}`;
-
+  sunrise.innerHTML = `Sunrise: ${sunriseDate}`;
+  
+  let sunsetUnix = response.data.sys.sunset;
+  let sunsetDate = new Date(sunsetUnix*1000);
   let sunset = document.querySelector("#sunset");
-  sunset.innerHTML = `Sunset: ${response.data.sys.sunset}`;
+  sunset.innerHTML = `Sunset: ${sunsetDate}`;
 }
 
 function showCurrentPosition(position) {

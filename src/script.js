@@ -55,39 +55,59 @@ function searchCity(event) {
 function displayWeather(response) {
   let cityResult = document.querySelector("#searchResult");
   cityResult.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-
+  //current temperature
   let temperatureElement = document.querySelector(".current-temp");
   let currentTemp = temperatureElement.innerHTML;
   let temperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = `${temperature}`;
-
+  //current weather description
   let currentDesc = document.querySelector("#current-Desc");
   currentDesc.innerHTML = `${response.data.weather[0].description}`;
-
+  //current feels like
   let feelsLike = document.querySelector("#feels-like");
   feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°C`;
-
+  //current humidity
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
-
+  //current low temperature
   let currentLowTemp = document.querySelector("#currentLowTemp");
   currentLowTemp.innerHTML = `Low: ${Math.round(response.data.main.temp_min)}°C`;
-
+  //current high temperature
   let currentHighTemp = document.querySelector("#currentHighTemp");
   currentHighTemp.innerHTML = `High: ${Math.round(response.data.main.temp_max)}°C`;
-
+  //windspeed
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
 
+  //sunrise
   let sunriseUnix = response.data.sys.sunrise;
   let sunriseDate = new Date(sunriseUnix*1000);
+  let sunriseHour = sunriseDate.getHours();
+  if (sunriseHour < 10) {
+    sunriseHour = `0${sunriseHour}`;
+  }
+  let sunriseMinutes = sunriseDate.getMinutes();
+  if (sunriseMinutes < 10) {
+    sunriseMinutes = `0${sunriseMinutes}`;
+  }
+  let sunriseTime = `${sunriseHour}:${sunriseMinutes}`;
   let sunrise = document.querySelector("#sunrise");
-  sunrise.innerHTML = `Sunrise: ${sunriseDate}`;
+  sunrise.innerHTML = `Sunrise: ${sunriseTime}`;
   
+  //sunset
   let sunsetUnix = response.data.sys.sunset;
   let sunsetDate = new Date(sunsetUnix*1000);
+  let sunsetHour = sunsetDate.getHours();
+  if (sunsetHour < 10) {
+    sunsetHour = `0${sunsetHour}`;
+  }
+  let sunsetMinutes = sunsetDate.getMinutes();
+  if (sunsetMinutes < 10) {
+    sunsetMinutes = `0${sunsetMinutes}`;
+  }
+  let sunsetTime = `${sunsetHour}:${sunsetMinutes}`;
   let sunset = document.querySelector("#sunset");
-  sunset.innerHTML = `Sunset: ${sunsetDate}`;
+  sunset.innerHTML = `Sunset: ${sunsetTime}`;
 }
 
 function showCurrentPosition(position) {

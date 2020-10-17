@@ -43,14 +43,27 @@ timeElement.innerHTML = formatTime(currentTime);
 
 let apiKey = "f0fc9549c6de17fa6c965f916fc7d8d4";
 
-// update city
-function searchCity(event) {
-  event.preventDefault();
-  let unit = "metric";
-  let cityInput = document.querySelector("#searchField");
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${unit}`;
-  axios.get(url).then(displayWeather);
+function search(city) {
+  
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#searchField");
+  search(cityInputElement.value);
+}
+
+// update city
+//function searchCity(event) {
+ // event.preventDefault();
+  //let unit = "metric";
+  //let cityInput = document.querySelector("#searchField");
+  //let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${unit}`;
+  //axios.get(url).then(displayWeather);
+//}
 
 function displayWeather(response) {
   
@@ -129,8 +142,9 @@ function getLocation() {
 }
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+searchForm.addEventListener("submit", handleSubmit);
 
 let currentLocationButton = document.querySelector("#location-search");
 currentLocationButton.addEventListener("click", getLocation);
 
+getLocation();

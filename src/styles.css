@@ -77,3 +77,11 @@ a:hover {
 h4:first-letter {
   text-transform: capitalize;
 }
+.current-weather .active {
+  color: white;
+  font-size: 30px;
+  cursor: default;
+}
+.current-weather .active:hover {
+  text-decoration: none;
+}

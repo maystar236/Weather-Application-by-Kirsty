@@ -132,13 +132,26 @@ function getLocation() {
 
 function displayFahrenheit(event) {
 event.preventDefault();
-let fahrenheitTemp = (10 * 9) / 5 + 32;
+let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+celsiusLink.classList.remove("active");
+fahrenheitLink.classList.add("active");
 let temperatureElement = document.querySelector(".current-temp");
 temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
+function displayCelsius(event) {
+event.preventDefault();
+let temperatureElement = document.querySelector(".current-temp");
+celsiusLink.classList.add("active");
+fahrenheitLink.classList.remove("active");
+temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
 let fahrenheitLink = document.querySelector("#fahrenheitTemp");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink = document.querySelector("#celsiusTemp");
+celsiusLink.addEventListener("click", displayCelsius);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);

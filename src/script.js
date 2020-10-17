@@ -1,4 +1,10 @@
 let currentTime = new Date();
+let dateElement = document.querySelector("#date");
+dateElement.innerHTML = formatDate(currentTime);
+let timeElement = document.querySelector("#time");
+timeElement.innerHTML = formatTime(currentTime);
+let apiKey = "f0fc9549c6de17fa6c965f916fc7d8d4";
+
 
 // display date
 function formatDate(event) {
@@ -22,8 +28,6 @@ function formatDate(event) {
   let dateNow = `Date: ${month} ${date}, ${year}`;
   return dateNow;
 }
-let dateElement = document.querySelector("#date");
-dateElement.innerHTML = formatDate(currentTime);
 
 // display time
 function formatTime(event) {
@@ -38,10 +42,7 @@ function formatTime(event) {
   let timeNow = `Time: ${hour}:${minutes}`;
   return timeNow;
 }
-let timeElement = document.querySelector("#time");
-timeElement.innerHTML = formatTime(currentTime);
 
-let apiKey = "f0fc9549c6de17fa6c965f916fc7d8d4";
 
 function search(city) {
   
@@ -56,42 +57,29 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-// update city
-//function searchCity(event) {
- // event.preventDefault();
-  //let unit = "metric";
-  //let cityInput = document.querySelector("#searchField");
-  //let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${unit}`;
-  //axios.get(url).then(displayWeather);
-//}
-
 function displayWeather(response) {
   
   let cityResult = document.querySelector("#searchResult");
-  cityResult.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  //current temperature
   let temperatureElement = document.querySelector(".current-temp");
   let currentTemp = temperatureElement.innerHTML;
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+  let temperature = Math.round(celsiusTemp);
   temperatureElement.innerHTML = `${temperature}`;
-  //current weather description
   let currentDesc = document.querySelector("#current-Desc");
-  currentDesc.innerHTML = `${response.data.weather[0].description}`;
-  //current feels like
   let feelsLike = document.querySelector("#feels-like");
-  feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°C`;
-  //current humidity
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
-  //current low temperature
   let currentLowTemp = document.querySelector("#currentLowTemp");
-  currentLowTemp.innerHTML = `Low: ${Math.round(response.data.main.temp_min)}°C`;
-  //current high temperature
   let currentHighTemp = document.querySelector("#currentHighTemp");
-  currentHighTemp.innerHTML = `High: ${Math.round(response.data.main.temp_max)}°C`;
-  //windspeed
   let windSpeed = document.querySelector("#wind");
+
+  cityResult.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
+  currentDesc.innerHTML = `${response.data.weather[0].description}`;
+  feelsLike.innerHTML = `Feels like: ${Math.round(response.data.main.feels_like)}°C`;
+  humidity.innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%`;
+  currentLowTemp.innerHTML = `Low: ${Math.round(response.data.main.temp_min)}°C`;
+  currentHighTemp.innerHTML = `High: ${Math.round(response.data.main.temp_max)}°C`;
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
+
   //sunrise
   let sunriseUnix = response.data.sys.sunrise;
   let sunriseDate = new Date(sunriseUnix*1000);
@@ -120,6 +108,7 @@ function displayWeather(response) {
   let sunsetTime = `${sunsetHour}:${sunsetMinutes}`;
   let sunset = document.querySelector("#sunset");
   sunset.innerHTML = `Sunset: ${sunsetTime}`;
+  
   //set current weather icon
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("alt", response.data.weather[0].description);
@@ -140,6 +129,16 @@ function showCurrentPosition(position) {
 function getLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentPosition);
 }
+
+function displayFahrenheit(event) {
+event.preventDefault();
+let fahrenheitTemp = (10 * 9) / 5 + 32;
+let temperatureElement = document.querySelector(".current-temp");
+temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheitTemp");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);

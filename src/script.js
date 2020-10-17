@@ -78,7 +78,6 @@ function displayWeather(response) {
   //windspeed
   let windSpeed = document.querySelector("#wind");
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
-
   //sunrise
   let sunriseUnix = response.data.sys.sunrise;
   let sunriseDate = new Date(sunriseUnix*1000);
@@ -93,7 +92,6 @@ function displayWeather(response) {
   let sunriseTime = `${sunriseHour}:${sunriseMinutes}`;
   let sunrise = document.querySelector("#sunrise");
   sunrise.innerHTML = `Sunrise: ${sunriseTime}`;
-  
   //sunset
   let sunsetUnix = response.data.sys.sunset;
   let sunsetDate = new Date(sunsetUnix*1000);
@@ -108,9 +106,13 @@ function displayWeather(response) {
   let sunsetTime = `${sunsetHour}:${sunsetMinutes}`;
   let sunset = document.querySelector("#sunset");
   sunset.innerHTML = `Sunset: ${sunsetTime}`;
-
+  //set current weather icon
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute(
+    "src",
+    `src/Images/${response.data.weather[0].icon}.png`
+  );
 }
 
 function showCurrentPosition(position) {

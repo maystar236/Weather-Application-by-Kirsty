@@ -53,6 +53,7 @@ function searchCity(event) {
 }
 
 function displayWeather(response) {
+  
   let cityResult = document.querySelector("#searchResult");
   cityResult.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   //current temperature

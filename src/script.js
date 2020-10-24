@@ -204,4 +204,4 @@ searchForm.addEventListener("submit", handleSubmit);
 let currentLocationButton = document.querySelector("#location-search");
 currentLocationButton.addEventListener("click", getLocation);
 
-search(Melbourne, AU);
+search("Melbourne, AU");

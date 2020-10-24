@@ -49,6 +49,9 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+
 }
 
 function handleSubmit(event) {
@@ -58,7 +61,7 @@ function handleSubmit(event) {
 }
 
 function displayWeather(response) {
-  
+   
   let cityResult = document.querySelector("#searchResult");
   let temperatureElement = document.querySelector(".current-temp");
   let currentTemp = temperatureElement.innerHTML;
@@ -116,6 +119,24 @@ function displayWeather(response) {
     "src",
     `src/Images/${response.data.weather[0].icon}.png`
   );
+}
+
+function displayForecast(response) {
+let forecastElement = document.querySelector("test");
+forecastElement.innerHTML = `
+        <div class="col" id = "test">
+          <h3>
+            9am 
+          </h3>
+          <img src="src/Images/sun-cloud-wind.png" />
+          <div class="weather-forecast-temperature">
+              High 21°
+              <br />
+            Low 18°
+          </div>
+        </div>
+        `;
+
 }
 
 function showCurrentPosition(position) {

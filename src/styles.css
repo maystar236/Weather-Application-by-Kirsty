@@ -29,12 +29,16 @@ h2 {
   margin: 10px 0px 0px 0px;
 }
 h3 {
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
-  margin: 0px 0px 20px 0px;
 }
 h4 {
   font-weight: 100px;
+}
+strong {
+  font-size: 15px;
+  text-align: center;
+  margin: 0px 0px 20px 0px;
 }
 img {
   display: block;
@@ -84,4 +88,12 @@ h4:first-letter {
 }
 .current-weather .active:hover {
   text-decoration: none;
+}
+.weather-forecast-temperature {
+  font-size: 12px;
+  text-align: center;
+}
+.weather-forecast-temperature strong {
+  font-size: 12px;
+  text-align: center;
 }

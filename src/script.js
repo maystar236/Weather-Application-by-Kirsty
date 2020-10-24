@@ -74,7 +74,7 @@ function handleSubmit(event) {
 }
 
 function displayWeather(response) {
-   
+  console.log(response); 
   let cityResult = document.querySelector("#searchResult");
   let temperatureElement = document.querySelector(".current-temp");
   let currentTemp = temperatureElement.innerHTML;
@@ -87,6 +87,7 @@ function displayWeather(response) {
   let currentLowTemp = document.querySelector("#currentLowTemp");
   let currentHighTemp = document.querySelector("#currentHighTemp");
   let windSpeed = document.querySelector("#wind");
+  let pressure = document.querySelector("#weatherPressure")
 
   cityResult.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   currentDesc.innerHTML = `${response.data.weather[0].description}`;
@@ -95,6 +96,7 @@ function displayWeather(response) {
   currentLowTemp.innerHTML = `Low: ${Math.round(response.data.main.temp_min)}°C`;
   currentHighTemp.innerHTML = `High: ${Math.round(response.data.main.temp_max)}°C`;
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
+  pressure.innerHTML = `Pressure: ${response.data.main.pressure}`;
 
   //sunrise
   let sunriseUnix = response.data.sys.sunrise;

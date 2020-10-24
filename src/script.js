@@ -42,6 +42,19 @@ function formatTime(event) {
   let timeNow = `Time: ${hour}:${minutes}`;
   return timeNow;
 }
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
 
 
 function search(city) {
@@ -122,22 +135,30 @@ function displayWeather(response) {
 }
 
 function displayForecast(response) {
-let forecastElement = document.querySelector("test");
-forecastElement.innerHTML = `
-        <div class="col" id = "test">
-          <h3>
-            9am 
-          </h3>
-          <img src="src/Images/sun-cloud-wind.png" />
-          <div class="weather-forecast-temperature">
-              High 21°
-              <br />
-            Low 18°
-          </div>
-        </div>
-        `;
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = null;
 
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class="col">
+      <h3>
+        ${formatHours(forecast.dt * 1000)}
+      </h3>
+    <img src="src/Images/${forecast.weather[0].icon}.png" />
+    <div class="weather-forecast-temperature">
+      <strong>
+        High: ${Math.round(forecast.main.temp_max)}°  
+      </strong>
+      <br />
+        Low: ${Math.round(forecast.main.temp_min)}°</div>
+    </div>
+    `;
+  }
 }
+
+
+
 
 function showCurrentPosition(position) {
   let lon = position.coords.longitude;
@@ -145,6 +166,9 @@ function showCurrentPosition(position) {
   let unit = "metric";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&units=${unit}`;
   axios.get(url).then(displayWeather);
+  Url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(Url).then(displayForecast);
+
 }
 
 function getLocation() {

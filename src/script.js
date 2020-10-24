@@ -204,4 +204,7 @@ searchForm.addEventListener("submit", handleSubmit);
 let currentLocationButton = document.querySelector("#location-search");
 currentLocationButton.addEventListener("click", getLocation);
 
+// Display predefined search result
 search("Melbourne, AU");
+// Display current location on load - requires location permissions
+//getLocation(); 

@@ -97,3 +97,7 @@ h4:first-letter {
   font-size: 12px;
   text-align: center;
 }
+.col-2 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
